@@ -1,0 +1,21 @@
+header {
+  background-color: var(--green);
+  color: var(--peach);
+  box-shadow: var(--box-shadow);
+
+  display: float;
+  text-align: center;
+  padding: 10px;
+}
+
+h1 {
+  font-size: 2.8rem;
+}
+
+.logo {
+  font-size: 3rem;
+  float: left;
+  margin-left: 20px;
+  margin-top: 5px;
+  cursor: pointer;
+}

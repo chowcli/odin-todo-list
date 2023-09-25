@@ -1,0 +1,72 @@
+.site-bar {
+  background-color: var(--sage-dark);
+  color: var(--peach-2);
+
+  padding: 20px;
+  width: 20%;
+  box-shadow: 5px 0 10px rgba(0, 0, 0, 0.2);
+}
+
+h2 {
+  font-size: 2rem;
+  padding: 2px 0 5px;
+  border-bottom: 2px solid var(--peach);
+}
+
+.project-container {
+  margin: 20px 0;
+}
+
+button.add-new-project {
+  background-color: var(--green);
+  border: none;
+  border-radius: 5px;
+  padding: 10px 20px;
+  color: var(--peach-2);
+  font-size: 1.5rem;
+
+  margin-top: 30px;
+  margin-left: 16px;
+  cursor: pointer;
+}
+
+.add-project-popup {
+  margin-top: 30px;
+  padding: 0 5px;
+
+  & input {
+    border: 1px solid var(--sage-light);
+    border-radius: 5px;
+
+    padding: 5px 10px;
+    margin-bottom: 15px;
+    width: 100%;
+
+    color: var(--sage-dark);
+    font-size: 1.2rem;
+  }
+
+  .btn-group {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 15%;
+
+    & button {
+      font-size: 1.1rem;
+      font-weight: 800;
+      padding: 10px;
+
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+
+    .add-project {
+      background-color: var(--sage-light);
+    }
+
+    .cancel {
+      background-color: var(--peach);
+    }
+  }
+}

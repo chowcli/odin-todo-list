@@ -5,10 +5,34 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title><%= htmlWebpackPlugin.options.title %></title>
+    <link href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet" />
   </head>
   <body>
     <header>
-      
+      <div class="logo">
+        <i class="bx bx-menu"></i>
+      </div>
+      <h1>Todo List</h1>
     </header>
+    <main>
+      <div class="site-bar">
+        <h2>Project Lists</h2>
+
+        <div class="project-container"></div>
+
+        <button class="add-new-project">Add new project</button>
+
+        <div class="add-project-popup" hidden>
+          <input type="text" />
+
+          <div class="btn-group">
+            <button class="add-project">Add</button>
+            <button class="cancel">Cancel</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="main-content"></div>
+    </main>
   </body>
 </html>
