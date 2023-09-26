@@ -19,11 +19,14 @@ html {
   --sage-dark: rgb(97, 130, 100);
   --sage-light: rgb(200, 228, 178);
   --sage-3: rgb(196, 193, 164);
-  --box-shadow: 0px 5px 10px rgb(214, 214, 214);
 }
 
 body {
   font-family: var(--font-family);
+  display: grid;
+  grid-template-rows: max(72px) 1fr;
+  grid-template-columns: max(300px) 1fr;
+  height: 100vh;
 }
 
 /* width */
@@ -39,9 +42,4 @@ body {
 /* Handle on hover */
 ::-webkit-scrollbar-thumb:hover {
   background: var(--peach);
-}
-
-main {
-  display: flex;
-  height: 100vh;
 }

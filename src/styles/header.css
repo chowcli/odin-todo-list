@@ -1,9 +1,7 @@
 header {
+  grid-area: 1 / 1 / 2 / 3;
   background-color: var(--green);
   color: var(--peach);
-  box-shadow: var(--box-shadow);
-
-  display: float;
   text-align: center;
   padding: 10px;
 }
