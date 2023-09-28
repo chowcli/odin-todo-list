@@ -16,4 +16,8 @@ h1 {
   margin-left: 20px;
   margin-top: 5px;
   cursor: pointer;
+
+  &:hover {
+    filter: brightness(120%);
+  }
 }

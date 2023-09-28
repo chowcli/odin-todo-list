@@ -12,14 +12,12 @@ class Project {
     this._name = value;
   }
 
-  insertTask(taskObject) {
-    const avoidDuplicateTask = () => {
-      return this.tasks.some(task => task.name === taskObject.name);
-    };
+  checkDuplicate() {
+    return this.tasks.some(task => task.name === taskObject.name);
+  }
 
-    if (!avoidDuplicateTask()) {
-      this.tasks.push(taskObject);
-    }
+  insertTask(taskObject) {
+    this.tasks.push(taskObject);
   }
 
   deleteTask(taskName) {
@@ -32,6 +30,10 @@ class Project {
 
   removeAllTasks() {
     this.tasks = [];
+  }
+
+  findTaskIndex(taskName) {
+    return this.tasks.some(task => task.name === taskName);
   }
 }
 

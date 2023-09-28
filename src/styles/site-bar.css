@@ -16,19 +16,24 @@ h2 {
   margin: 20px 0;
 }
 
-button.add-new-project {
+.add-new-project {
   background-color: var(--green);
   color: var(--peach-2);
   font-size: 1.5rem;
 
   border: none;
   border-radius: 5px;
+  margin-top: 20px;
   padding: 10px 20px;
   cursor: pointer;
+
+  &:hover {
+    filter: brightness(120%);
+  }
 }
 
 .add-project-popup {
-  margin-top: 30px;
+  margin-top: 40px;
   padding: 0 5px;
 
   & input {
@@ -60,10 +65,48 @@ button.add-new-project {
 
     .add-project {
       background-color: var(--sage-light);
+
+      &:hover {
+        filter: brightness(120%);
+      }
     }
 
     .cancel {
       background-color: var(--peach);
+
+      &:hover {
+        filter: brightness(120%);
+      }
+    }
+  }
+}
+
+.project-item {
+  width: 100%;
+  padding: 10px 5px;
+  font-size: 1.3rem;
+  border: none;
+  background-color: var(--sage-dark);
+  color: var(--yellow);
+
+  display: flex;
+  justify-content: space-between;
+  cursor: pointer;
+
+  &:hover {
+    background-color: var(--peach-hover);
+  }
+
+  .left-panel {
+    width: 70%;
+    display: flex;
+    align-items: end;
+    gap: 5px;
+
+    & span {
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
     }
   }
 }

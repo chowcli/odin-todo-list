@@ -2,14 +2,12 @@ const todoList = (() => {
   // array of project object
   const projectList = [];
 
-  const avoidDuplicateProject = projectName => {
+  const checkDuplicate = projectName => {
     return projectList.some(project => project.name === projectName);
   };
 
   const addProject = project => {
-    if (!avoidDuplicateProject(project.name)) {
-      projectList.push(project);
-    }
+    projectList.push(project);
   };
 
   const removeProject = projectName => {
@@ -20,7 +18,11 @@ const todoList = (() => {
     }
   };
 
-  return { addProject, removeProject };
+  const findProjectIndex = projectName => {
+    return projectList.findIndex(project => project.name === projectName);
+  };
+
+  return { checkDuplicate, addProject, removeProject, findProjectIndex };
 })();
 
 export default todoList;

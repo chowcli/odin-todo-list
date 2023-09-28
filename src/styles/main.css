@@ -14,6 +14,7 @@ html {
     "Open Sans", "Helvetica Neue", sans-serif;
   --peach: rgb(255, 155, 155);
   --peach-2: rgb(255, 198, 172);
+  --peach-hover: rgba(255, 228, 214, 0.2);
   --yellow: rgb(255, 246, 220);
   --green: rgb(1, 106, 112);
   --sage-dark: rgb(97, 130, 100);
