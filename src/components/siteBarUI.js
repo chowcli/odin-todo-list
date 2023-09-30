@@ -54,6 +54,14 @@ const navBarUI = () => {
       setHiddenAttr(takeProjectName, true);
       setHiddenAttr(addProjectBtn, false);
     }
+
+    if (target.matches(".bx-trash")) {
+      const divElement = target.closest(".project-item");
+      const spanElement = divElement.querySelector("span");
+
+      todoList.removeProject(spanElement.textContent);
+      divElement.remove();
+    }
   });
 };
 

@@ -11,7 +11,7 @@ const todoList = (() => {
   };
 
   const removeProject = projectName => {
-    const projectIndex = projectList.findIndex(project => project.name === projectName);
+    const projectIndex = findProjectIndex(projectName);
 
     if (projectIndex !== -1) {
       projectList.splice(projectIndex, 1);
