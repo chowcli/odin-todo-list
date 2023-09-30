@@ -55,6 +55,7 @@ const navBarUI = () => {
       setHiddenAttr(addProjectBtn, false);
     }
 
+    // delete project button handler
     if (target.matches(".bx-trash")) {
       const divElement = target.closest(".project-item");
       const spanElement = divElement.querySelector("span");
