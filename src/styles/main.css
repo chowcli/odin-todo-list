@@ -12,20 +12,24 @@ html {
 :root {
   --font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell,
     "Open Sans", "Helvetica Neue", sans-serif;
-  --peach: rgb(255, 155, 155);
-  --peach-2: rgb(255, 198, 172);
-  --peach-hover: rgba(255, 228, 214, 0.2);
-  --yellow: rgb(255, 246, 220);
-  --green: rgb(1, 106, 112);
-  --sage-dark: rgb(97, 130, 100);
-  --sage-light: rgb(200, 228, 178);
-  --sage-3: rgb(196, 193, 164);
+
+  /* color for radio button */
+  --white: rgb(255, 255, 255);
+  --sun-glow: rgb(255, 196, 54);
+  --alizarin-crimson: rgb(237, 28, 28);
+  --la-palma: rgb(45, 148, 11);
+
+/* multiple purposes color */
+  --tall-poppy: rgb(187, 37, 37);
+  --solar-eclipse: rgb(173, 47, 38);
+  --cinnabar: #e64848;
+  --gallery: rgb(239, 239, 239);
 }
 
 body {
   font-family: var(--font-family);
   display: grid;
-  grid-template-rows: max(72px) 1fr;
+  grid-template-rows: minmax(55px, 6.7%) 1fr;
   grid-template-columns: max(300px) 1fr;
   height: 100vh;
 }
@@ -38,9 +42,4 @@ body {
 /* Handle */
 ::-webkit-scrollbar-thumb {
   background: var(--peach-2);
-}
-
-/* Handle on hover */
-::-webkit-scrollbar-thumb:hover {
-  background: var(--peach);
 }

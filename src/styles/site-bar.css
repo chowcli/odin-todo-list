@@ -1,100 +1,118 @@
 .site-bar {
-  background-color: var(--sage-dark);
-  color: var(--peach-2);
-
+  background-color: var(--gallery);
+  color: var(--tall-poppy);
   padding: 20px;
   overflow: auto;
 }
 
 h2 {
-  font-size: 2rem;
+  font-size: 1.5rem;
   padding: 2px 0 5px;
-  border-bottom: 2px solid var(--peach);
+  margin-bottom: 5px;
 }
 
 .project-container {
-  margin: 20px 0;
+  border-top: 1px solid var(--cinnabar);
+  border-bottom: 1px solid var(--cinnabar);
+  padding: 15px 0;
 }
 
 .add-new-project {
-  background-color: var(--green);
-  color: var(--peach-2);
-  font-size: 1.5rem;
+  background-color: var(--white);
+  color: var(--cinnabar);
+  font-size: 1rem;
+  font-weight: 900;
 
+  width: 100%;
   border: none;
   border-radius: 5px;
   margin-top: 20px;
-  padding: 10px 20px;
+  padding: 10px 0px;
   cursor: pointer;
 
   &:hover {
-    filter: brightness(120%);
+    filter: brightness(90%);
   }
 }
 
 .add-project-popup {
-  margin-top: 40px;
+  margin-top: 20px;
   padding: 0 5px;
 
   & input {
-    border: 1px solid var(--sage-light);
+    border: 2px solid var(--cinnabar);
     border-radius: 5px;
 
     padding: 5px 10px;
     margin-bottom: 15px;
     width: 100%;
 
-    color: var(--sage-dark);
-    font-size: 1.2rem;
+    color: var(--solar-eclipse);
+    font-size: 1rem;
   }
 
   .btn-group {
     display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    gap: 15%;
+    grid-template-columns: repeat(2, 35%);
+    gap: 20%;
 
     & button {
-      font-size: 1.1rem;
+      font-size: 1rem;
       font-weight: 800;
       padding: 10px;
 
-      border: none;
       border-radius: 5px;
       cursor: pointer;
     }
 
     .add-project {
-      background-color: var(--sage-light);
+      color: var(--la-palma);
+      background-color: var(--white);
+      border: 2px solid var(--la-palma);
 
       &:hover {
-        filter: brightness(120%);
+        color: var(--white);
+        background-color: var(--la-palma);
+        border: 2px solid var(--la-palma);
       }
     }
 
     .cancel {
-      background-color: var(--peach);
+      color: var(--cinnabar);
+      background-color: var(--white);
+      border: 2px solid var(--cinnabar);
 
       &:hover {
-        filter: brightness(120%);
+        color: var(--white);
+        background-color: var(--cinnabar);
+        border: 2px solid var(--cinnabar);
       }
     }
   }
 }
 
+.project-container {
+  display: grid;
+  gap: 10px;
+}
+
 .project-item {
   width: 100%;
   padding: 10px 5px;
-  font-size: 1.3rem;
-  border: none;
-  background-color: var(--sage-dark);
-  color: var(--yellow);
+  font-size: 1.2rem;
+  font-weight: 500;
+
+  border: 1px solid transparent;
+  border-radius: 5px;
+  background-color: var(--white);
+  color: var(--solar-eclipse);
 
   display: flex;
   justify-content: space-between;
   cursor: pointer;
 
   &:hover {
-    background-color: var(--peach-hover);
+    border-color: var(--solar-eclipse);
   }
 
   .left-panel {

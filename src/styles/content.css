@@ -1,5 +1,5 @@
 .main-content {
-  background-color: var(--sage-3);
-  color: var(--yellow);
-  height: calc(100vh - 72px);
+  background-color: var(--white);
+  color: var(--red-rose);
+  height: 100%;
 }
