@@ -19,7 +19,7 @@ html {
   --alizarin-crimson: rgb(237, 28, 28);
   --la-palma: rgb(45, 148, 11);
 
-/* multiple purposes color */
+  /* multiple purposes color */
   --tall-poppy: rgb(187, 37, 37);
   --solar-eclipse: rgb(173, 47, 38);
   --cinnabar: #e64848;
@@ -41,5 +41,9 @@ body {
 
 /* Handle */
 ::-webkit-scrollbar-thumb {
-  background: var(--peach-2);
+  background-color: var(--gallery);
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--cinnabar);
 }
