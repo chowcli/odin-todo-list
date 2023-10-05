@@ -1,7 +1,10 @@
+import { shortenUUID } from "./reuseFunc";
+
 class Project {
   constructor(name) {
     this.name = name;
     this.tasks = [];
+    this.id = shortenUUID();
   }
 
   get name() {
@@ -12,7 +15,7 @@ class Project {
     this._name = value;
   }
 
-  checkDuplicate() {
+  checkDuplicate(taskObject) {
     return this.tasks.some(task => task.name === taskObject.name);
   }
 
@@ -20,20 +23,16 @@ class Project {
     this.tasks.push(taskObject);
   }
 
-  deleteTask(taskName) {
-    const taskIndex = this.tasks.findIndex(task => task.name === taskName);
+  deleteTask(taskID) {
+    const taskIndex = this.tasks.findIndex(task => task.id === taskID);
 
     if (taskIndex !== -1) {
       this.tasks.splice(taskIndex, 1);
     }
   }
 
-  removeAllTasks() {
-    this.tasks = [];
-  }
-
-  findTaskIndex(taskName) {
-    return this.tasks.some(task => task.name === taskName);
+  findTaskIndex(taskID) {
+    return this.tasks.some(task => task.id === taskID);
   }
 }
 

@@ -10,19 +10,19 @@ const todoList = (() => {
     projectList.push(project);
   };
 
-  const removeProject = projectName => {
-    const projectIndex = findProjectIndex(projectName);
+  const removeProject = projectId => {
+    const projectIndex = findProjectIndex(projectId);
 
     if (projectIndex !== -1) {
       projectList.splice(projectIndex, 1);
     }
   };
 
-  const findProjectIndex = projectName => {
-    return projectList.findIndex(project => project.name === projectName);
+  const findProjectIndex = projectId => {
+    return projectList.findIndex(project => project.id === projectId);
   };
 
-  return { checkDuplicate, addProject, removeProject, findProjectIndex };
+  return { projectList, checkDuplicate, addProject, removeProject, findProjectIndex };
 })();
 
 export default todoList;

@@ -1,9 +1,12 @@
+import { shortenUUID } from "./reuseFunc";
+
 class Task {
   constructor(name, details, dueDate, priority) {
     this.name = name;
     this.details = details;
     this.dueDate = dueDate;
     this.priority = priority;
+    this.id = shortenUUID();
     this.completed = false;
   }
 

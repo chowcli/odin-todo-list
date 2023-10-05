@@ -122,9 +122,19 @@ h2 {
     gap: 5px;
 
     & span {
+      text-align: left;
+      width: 100%;
       white-space: nowrap;
       overflow: hidden;
       text-overflow: ellipsis;
     }
+  }
+
+  .right-panel {
+    visibility: hidden;
+  }
+
+  &:hover .right-panel {
+    visibility: visible;
   }
 }
