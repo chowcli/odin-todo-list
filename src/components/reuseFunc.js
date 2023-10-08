@@ -18,4 +18,13 @@ function checkValidName(txtValue) {
   return txtValue !== "" && regex.test(txtValue);
 }
 
-export { setHiddenAttr, checkValidName, shortenUUID };
+function clearInputField() {
+  const inputs = document.querySelectorAll("input");
+  inputs.forEach(input => {
+    if (input.type === "radio" && input.checked) {
+      input.checked = false;
+    }
+    input.value = "";
+  });
+}
+export { setHiddenAttr, checkValidName, shortenUUID, clearInputField };

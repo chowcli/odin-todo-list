@@ -1,4 +1,4 @@
-import { setHiddenAttr, checkValidName } from "./reuseFunc";
+import { setHiddenAttr, checkValidName, clearInputField } from "./reuseFunc";
 import Project from "./project";
 import todoList from "./todoList";
 import createProjectDOM from "./projectDOM";
@@ -39,7 +39,7 @@ function confirmBtnHandler() {
   const projectObject = createProject(input.value);
   projectContainer.append(createProjectDOM(projectObject));
 
-  input.value = "";
+  clearInputField();
 
   setHiddenAttr(takeProjectName, true);
   setHiddenAttr(addProjectBtn, false);
@@ -49,7 +49,8 @@ function cancelBtnHandler() {
   const addProjectBtn = document.querySelector(".add-new-project");
   const takeProjectName = document.querySelector(".add-project-popup");
 
-  document.querySelector("input[type='text']").value = "";
+  clearInputField();
+
   setHiddenAttr(takeProjectName, true);
   setHiddenAttr(addProjectBtn, false);
 }

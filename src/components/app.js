@@ -1,7 +1,9 @@
 import navBarUI from "./siteBarUI";
+import mainContentUI from "./mainContentUI";
 
-function websiteInteract() {
+const websiteInteract = () => {
   navBarUI();
-}
+  mainContentUI();
+};
 
 export default websiteInteract;
