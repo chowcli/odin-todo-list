@@ -15,8 +15,8 @@ class Project {
     this._name = value;
   }
 
-  checkDuplicate(taskObject) {
-    return this.tasks.some(task => task.name === taskObject.name);
+  checkDuplicate(taskName) {
+    return this.tasks.some(task => task.name === taskName);
   }
 
   insertTask(taskObject) {
