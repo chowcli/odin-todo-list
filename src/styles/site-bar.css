@@ -3,12 +3,12 @@
   color: var(--tall-poppy);
   padding: 20px;
   overflow: auto;
-}
 
-h2 {
-  font-size: 1.5rem;
-  padding: 2px 0 5px;
-  margin-bottom: 5px;
+  & h2 {
+    font-size: 1.5rem;
+    padding: 2px 0 5px;
+    margin-bottom: 5px;
+  }
 }
 
 .project-container {

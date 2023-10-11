@@ -1,5 +1,6 @@
 dialog {
   width: 50%;
+
   /* cannot apply display directly to the dialog 
   because it will cause some problem like displaying itself even though it not suppose to */
 

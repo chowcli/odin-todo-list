@@ -1,20 +1,24 @@
 .main-content {
   background-color: var(--white);
+  height: calc(100vh - 55px);
 }
 
 .container {
   margin: 50px auto 0;
   width: 70%;
+  height: 80%;
 
   & h2 {
     font-size: 2.3rem;
     text-align: center;
+
+    padding-bottom: 5px;
     border-radius: 5px;
     background-color: var(--gallery);
   }
 
   .add-task {
-    padding: 5px;
+    padding: 8px;
     font-size: 1.1rem;
     font-weight: 800;
     text-align: center;
@@ -40,9 +44,10 @@
   border-radius: 5px;
   background-color: var(--gallery);
 
+  max-height: 80%;
   display: grid;
   gap: 10px;
-  grid-template-columns: auto;
+  grid-template-rows: auto;
 
   font-size: 1.2rem;
   overflow: auto;
