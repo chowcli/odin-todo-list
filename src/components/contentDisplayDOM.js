@@ -8,7 +8,7 @@ function contentDOM(project) {
   const addTaskBtn = document.createElement("div");
   addTaskBtn.classList.add("add-task");
   const icon = document.createElement("i");
-  icon.classList.add("bx", "bx-plus");
+  icon.classList.add("bx-fw", "bx", "bx-list-plus");
   const span = document.createElement("span");
   span.textContent = "Add New Task";
   addTaskBtn.append(icon, span);

@@ -1,5 +1,82 @@
 .main-content {
   background-color: var(--white);
-  color: var(--red-rose);
-  height: 100%;
+}
+
+.container {
+  margin: 50px auto 0;
+  width: 70%;
+
+  & h2 {
+    font-size: 2.3rem;
+    text-align: center;
+    border-radius: 5px;
+    background-color: var(--gallery);
+  }
+
+  .add-task {
+    padding: 5px;
+    font-size: 1.1rem;
+    font-weight: 800;
+    text-align: center;
+
+    border-radius: 5px;
+    background-color: var(--gallery);
+    cursor: pointer;
+
+    &:hover {
+      filter: brightness(95%);
+    }
+
+    & i {
+      font-weight: 900;
+      margin-right: 5px;
+    }
+  }
+}
+
+.task-container {
+  margin: 10px 0;
+  padding: 20px;
+  border-radius: 5px;
+  background-color: var(--gallery);
+
+  display: grid;
+  gap: 10px;
+  grid-template-columns: auto;
+
+  font-size: 1.2rem;
+  overflow: auto;
+
+  .task-item {
+    padding: 10px;
+    display: flex;
+    justify-content: space-between;
+    border-radius: 5px;
+    background-color: var(--white);
+
+    .leftPart {
+      display: flex;
+      align-items: flex-end;
+    }
+
+    .rightPart {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+
+      .task-date {
+        margin-right: 5px;
+        font-size: 1rem;
+        font-weight: 600;
+      }
+
+      & i {
+        visibility: hidden;
+      }
+    }
+
+    &:hover .rightPart i {
+      visibility: visible;
+    }
+  }
 }

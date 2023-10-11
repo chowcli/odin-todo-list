@@ -4,7 +4,6 @@ import Task from "./task";
 import { clearInputField, checkValidName, setHiddenAttr } from "./reuseFunc";
 
 const mainContentUI = () => {
-  let isModalOpen = false;
   const mainContent = document.querySelector(".main-content");
   const modal = document.querySelector(".modal");
 
@@ -14,16 +13,15 @@ const mainContentUI = () => {
     if (target.matches(".add-task") || target.closest(".add-task i") || target.closest(".add-task span")) {
       clearInputField();
       modal.showModal();
-      isModalOpen = true;
 
       const container = mainContent.querySelector(".container");
       const taskContainer = container.querySelector(".task-container");
-      modalUI(modal, container.dataset.projectId, taskContainer, isModalOpen);
+      modalUI(modal, container.dataset.projectId, taskContainer);
     }
   });
 };
 
-const modalUI = (modalElement, containerId, taskContainer, isModalOpen) => {
+const modalUI = (modalElement, containerId, taskContainer) => {
   const clickHandler = event => {
     const { target } = event;
 
@@ -60,13 +58,13 @@ const modalUI = (modalElement, containerId, taskContainer, isModalOpen) => {
       projectObject.insertTask(taskObject);
       taskContainer.appendChild(createTaskDOM(taskObject));
 
-      isModalOpen = false;
+      // remove eventListener each time to prevent event from being stacking
       modalElement.removeEventListener("click", clickHandler);
     }
 
     if (target.matches(".cancel")) {
       modalElement.close();
-      isModalOpen = false;
+
       modalElement.removeEventListener("click", clickHandler);
     }
   };
