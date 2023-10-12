@@ -16,28 +16,30 @@
     border-radius: 5px;
     background-color: var(--gallery);
   }
+}
 
-  .add-task {
-    padding: 8px;
-    font-size: 1.1rem;
-    font-weight: 800;
-    text-align: center;
+/* styling for add task button belong to container */
+.add-task {
+  padding: 8px;
+  font-size: 1.1rem;
+  font-weight: 800;
+  text-align: center;
 
-    border-radius: 5px;
-    background-color: var(--gallery);
-    cursor: pointer;
+  border-radius: 5px;
+  background-color: var(--gallery);
+  cursor: pointer;
 
-    &:hover {
-      filter: brightness(95%);
-    }
+  &:hover {
+    filter: brightness(95%);
+  }
 
-    & i {
-      font-weight: 900;
-      margin-right: 5px;
-    }
+  & i {
+    font-weight: 900;
+    margin-right: 5px;
   }
 }
 
+/* styling for task container */
 .task-container {
   margin: 10px 0;
   padding: 20px;
@@ -49,39 +51,105 @@
   gap: 10px;
   grid-template-rows: auto;
 
-  font-size: 1.2rem;
   overflow: auto;
+}
 
-  .task-item {
-    padding: 10px;
-    display: flex;
-    justify-content: space-between;
-    border-radius: 5px;
+/* styling for each task item */
+.task-item {
+  padding: 10px 15px;
+  display: flex;
+  justify-content: space-between;
+
+  border-radius: 5px;
+  border: 2px solid var(--white);
+  background-color: var(--white);
+
+  /* apply for all button belong to task item */
+  .btn {
+    border: none;
     background-color: var(--white);
+    cursor: pointer;
+  }
 
-    .leftPart {
-      display: flex;
-      align-items: flex-end;
+  &:hover .rightPart .btn {
+    visibility: visible;
+  }
+}
+
+/* styling for left part */
+.task-item .leftPart {
+  display: flex;
+  gap: 8px;
+  align-items: start;
+
+  & span {
+    font-size: 1.2rem;
+  }
+
+  & i {
+    font-size: 1.6rem;
+  }
+}
+
+/* styling for right part */
+.task-item .rightPart {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+
+  .task-date {
+    margin-right: 10px;
+    font-size: 1rem;
+    font-weight: 600;
+  }
+
+  .btn {
+    visibility: hidden;
+
+    & i {
+      font-size: 1.3rem;
+    }
+  }
+}
+
+/* change color based on class name */
+.task-item {
+  &.low-priority {
+    color: var(--la-palma);
+
+    .leftPart i,
+    .rightPart i {
+      color: var(--la-palma);
     }
 
-    .rightPart {
-      display: flex;
-      align-items: center;
-      gap: 10px;
+    &:hover {
+      border: 2px solid var(--la-palma);
+    }
+  }
 
-      .task-date {
-        margin-right: 5px;
-        font-size: 1rem;
-        font-weight: 600;
-      }
+  &.medium-priority {
+    color: var(--sun-glow);
 
-      & i {
-        visibility: hidden;
-      }
+    .leftPart i,
+    .rightPart i {
+      color: var(--sun-glow);
     }
 
-    &:hover .rightPart i {
-      visibility: visible;
+    &:hover {
+      border: 2px solid var(--sun-glow);
+    }
+  }
+
+  &.high-priority {
+    color: var(--alizarin-crimson);
+
+    .leftPart i,
+    .rightPart i {
+      color: var(--alizarin-crimson);
+    }
+
+    &:hover {
+      border: 2px solid var(--alizarin-crimson);
     }
   }
 }
