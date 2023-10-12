@@ -45,9 +45,9 @@ const modalUI = (modalElement, containerId, taskContainer) => {
         return;
       }
 
-      const taskDescription = modalElement.querySelector("input[name='task-description']");
+      const taskDescription = modalElement.querySelector("textarea[name='task-description']");
       const taskDueDate = modalElement.querySelector("input[name='task-dueDate']");
-      const taskPriority = modalElement.querySelector("input[type='radio']:checked");
+      const taskPriority = modalElement.querySelector("input[name='priority']:checked");
 
       // prevent error when select a null element
       if (taskDueDate.value === "" || taskPriority === null) {
@@ -56,6 +56,7 @@ const modalUI = (modalElement, containerId, taskContainer) => {
 
       const taskObject = new Task(taskTitle.value, taskDescription.value, taskDueDate.value, taskPriority.value);
       projectObject.insertTask(taskObject);
+
       taskContainer.appendChild(createTaskDOM(taskObject));
 
       // remove eventListener each time to prevent event from being stacking

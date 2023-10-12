@@ -71,9 +71,7 @@ function createTaskDOM(task) {
 
   // change color of text, icon and border hover based on priority
   // state of item: checked or uncheck
-  console.log("Task priority:", task.priority);
   const priorityClassName = setPriorityClass(task.priority);
-  console.log("Task priority class name:", priorityClassName);
   taskItem.classList.add(`${priorityClassName}`, `check-${task.completed}`);
 
   taskItem.append(leftPart, rightPart);
