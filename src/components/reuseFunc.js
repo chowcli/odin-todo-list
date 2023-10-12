@@ -23,8 +23,12 @@ function clearInputField() {
   inputs.forEach(input => {
     if (input.type === "radio" && input.checked) {
       input.checked = false;
+    } else if (input.type !== "radio") {
+      input.value = "";
     }
-    input.value = "";
   });
+
+  const textarea = document.querySelector("textarea");
+  textarea.value = "";
 }
 export { setHiddenAttr, checkValidName, shortenUUID, clearInputField };
