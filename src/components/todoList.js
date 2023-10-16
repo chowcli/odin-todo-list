@@ -22,7 +22,20 @@ const todoList = (() => {
     return projectList.findIndex(project => project.id === projectId);
   };
 
-  return { projectList, checkDuplicate, addProject, removeProject, findProjectIndex };
+  const getProjectObject = projectId => {
+    const projectIndex = findProjectIndex(projectId);
+
+    return projectList[projectIndex];
+  };
+
+  return {
+    projectList,
+    checkDuplicate,
+    addProject,
+    removeProject,
+    findProjectIndex,
+    getProjectObject,
+  };
 })();
 
 export default todoList;

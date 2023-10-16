@@ -24,7 +24,7 @@ class Project {
   }
 
   deleteTask(taskID) {
-    const taskIndex = this.tasks.findIndex(task => task.id === taskID);
+    const taskIndex = this.findTaskIndex(taskID);
 
     if (taskIndex !== -1) {
       this.tasks.splice(taskIndex, 1);
@@ -32,7 +32,13 @@ class Project {
   }
 
   findTaskIndex(taskID) {
-    return this.tasks.some(task => task.id === taskID);
+    return this.tasks.findIndex(task => task.id === taskID);
+  }
+
+  getTaskObject(taskId) {
+    const taskIndex = this.findTaskIndex(taskId);
+
+    return this.tasks[taskIndex];
   }
 }
 

@@ -79,4 +79,20 @@ function createTaskDOM(task) {
   return taskItem;
 }
 
-export default createTaskDOM;
+function modifyTaskDOM(taskItem, taskObject) {
+  const taskName = taskItem.querySelector(".leftPart .task-name");
+  const dueDate = taskItem.querySelector(".rightPart .task-date");
+
+  taskName.textContent = taskObject.name;
+  dueDate.textContent = taskObject.dueDate;
+
+  // convert classList to array and use find method
+  const oldPriority = Array.from(taskItem.classList).find(className => {
+    return className.includes("-priority");
+  });
+
+  const newPriority = setPriorityClass(taskObject.priority);
+  taskItem.classList.replace(oldPriority, newPriority);
+}
+
+export { createTaskDOM, modifyTaskDOM };

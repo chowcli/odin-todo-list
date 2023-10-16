@@ -1,4 +1,4 @@
-import createTaskDOM from "./taskDOM";
+import { createTaskDOM, modifyTaskDOM } from "./taskDOM";
 import todoList from "./todoList";
 import Task from "./task";
 import { clearInputField, checkValidName, setHiddenAttr } from "./reuseFunc";
@@ -10,18 +10,106 @@ const mainContentUI = () => {
   mainContent.addEventListener("click", event => {
     const { target } = event;
 
-    if (target.matches(".add-task") || target.closest(".add-task i") || target.closest(".add-task span")) {
+    if (
+      target.matches(".add-task") ||
+      target.closest(".add-task i") ||
+      target.closest(".add-task span")
+    ) {
       clearInputField();
       modal.showModal();
 
       const container = mainContent.querySelector(".container");
       const taskContainer = container.querySelector(".task-container");
-      modalUI(modal, container.dataset.projectId, taskContainer);
+
+      const projectObject = todoList.getProjectObject(container.dataset.projectId);
+
+      taskModalUI({
+        modalElement: modal,
+        projectObject: projectObject,
+        taskContainer: taskContainer,
+      });
+
+      return;
+    }
+
+    if (target.closest(".editBtn")) {
+      const input_Title = modal.querySelector("input[name='task-title']");
+      const textarea_Description = modal.querySelector("textarea#description");
+      const input_DueDate = modal.querySelector("input[name='task-dueDate']");
+      const input_Priorities = modal.querySelectorAll("input[name='priority']");
+
+      const taskItem = target.closest(".task-item");
+      const container = mainContent.querySelector(".container");
+
+      const projectObject = todoList.getProjectObject(container.dataset.projectId);
+      const taskObject = projectObject.getTaskObject(taskItem.dataset.taskId);
+
+      input_Title.value = `${taskObject.name}`;
+      textarea_Description.value = `${taskObject.details}`;
+      input_DueDate.value = `${taskObject.dueDate}`;
+
+      input_Priorities.forEach(input => {
+        if (input.value === taskObject.priority) {
+          input.checked = true;
+        }
+      });
+
+      const saveBtn = modal.querySelector(".below .add");
+      const editBtn = modal.querySelector(".below .save");
+      setHiddenAttr(saveBtn, true);
+      setHiddenAttr(editBtn, false);
+
+      modal.showModal();
+      taskModalUI({
+        modalElement: modal,
+        taskItem: taskItem,
+        taskObject: taskObject,
+      }); // use object destructuring
+
+      return;
+    }
+
+    if (target.closest(".deleteBtn")) {
+      const taskItem = target.closest(".task-item");
+      const container = mainContent.querySelector(".container");
+      const taskContainer = container.querySelector(".task-container");
+
+      const projectObject = todoList.getProjectObject(container.dataset.projectId);
+
+      projectObject.deleteTask(taskItem.dataset.taskId);
+      taskContainer.removeChild(taskItem);
+
+      return;
+    }
+
+    if (target.closest(".infoBtn")) {
+      const taskItem = target.closest(".task-item");
+      const container = mainContent.querySelector(".container");
+
+      const projectObject = todoList.getProjectObject(container.dataset.projectId);
+      const taskObject = projectObject.getTaskObject(taskItem.dataset.taskId);
+
+      displayTaskInfo_Modal(taskObject, projectObject);
+    }
+
+    if (target.closest(".close-modal-btn")) {
+      const infoModal = document.querySelector(".task-info-modal");
+
+      const priorityIcon = infoModal.querySelector(".priority-area");
+      const removeClassName = Array.from(priorityIcon.classList).find(className => {
+        return className.includes("-level");
+      });
+      priorityIcon.classList.remove(removeClassName);
+
+      infoModal.querySelector(".taskTitle").textContent = "";
+      infoModal.querySelector(".time-area").textContent = "";
+      infoModal.querySelector(".project-area").textContent = "";
+      infoModal.querySelector(".note-area").textContent = "";
     }
   });
 };
 
-const modalUI = (modalElement, containerId, taskContainer) => {
+const taskModalUI = ({ modalElement, projectObject, taskContainer, taskItem, taskObject }) => {
   const clickHandler = event => {
     const { target } = event;
 
@@ -33,12 +121,11 @@ const modalUI = (modalElement, containerId, taskContainer) => {
       const taskTitle = modalElement.querySelector("input[name='task-title']");
 
       if (!checkValidName(taskTitle.value)) {
-        alert("Invalid name, name must contains at least one non-whitespace character and must not be empty");
+        alert(
+          "Invalid name, name must contains at least one non-whitespace character and must not be empty"
+        );
         return;
       }
-
-      const projectIndex = todoList.findProjectIndex(containerId);
-      const projectObject = todoList.projectList[projectIndex];
 
       if (projectObject.checkDuplicate(taskTitle.value)) {
         alert("This task is already exist, please enter a new name");
@@ -54,23 +141,66 @@ const modalUI = (modalElement, containerId, taskContainer) => {
         return;
       }
 
-      const taskObject = new Task(taskTitle.value, taskDescription.value, taskDueDate.value, taskPriority.value);
+      const taskObject = new Task(
+        taskTitle.value,
+        taskDescription.value,
+        taskDueDate.value,
+        taskPriority.value
+      );
       projectObject.insertTask(taskObject);
 
       taskContainer.appendChild(createTaskDOM(taskObject));
 
       // remove eventListener each time to prevent event from being stacking
       modalElement.removeEventListener("click", clickHandler);
+      return;
     }
 
     if (target.matches(".cancel")) {
       modalElement.close();
+      modalElement.removeEventListener("click", clickHandler);
+      return;
+    }
+
+    if (target.matches(".save")) {
+      const input_Title = modalElement.querySelector("input[name='task-title']");
+      const textarea_Description = modalElement.querySelector("textarea#description");
+      const input_DueDate = modalElement.querySelector("input[name='task-dueDate']");
+      const input_Priority = modalElement.querySelector("input[name='priority']:checked");
+
+      taskObject.name = input_Title.value;
+      taskObject.details = textarea_Description.value;
+      taskObject.dueDate = input_DueDate.value;
+      taskObject.priority = input_Priority.value;
+
+      modifyTaskDOM(taskItem, taskObject);
+      modalElement.close();
 
       modalElement.removeEventListener("click", clickHandler);
+      return;
     }
   };
 
   modalElement.addEventListener("click", clickHandler);
+};
+
+const displayTaskInfo_Modal = (taskObject, projectObject) => {
+  const infoModal = document.querySelector(".task-info-modal");
+
+  const priorityIcon = infoModal.querySelector(".priority-area");
+  console.log(priorityIcon);
+  const taskTitle = infoModal.querySelector(".taskTitle");
+  const timeArea = infoModal.querySelector(".time-area");
+  const projectArea = infoModal.querySelector(".project-area");
+  const noteArea = infoModal.querySelector(".note-area");
+
+  priorityIcon.classList.add(`${taskObject.priority}-level`);
+  taskTitle.textContent = taskObject.name;
+  timeArea.textContent = taskObject.dueDate;
+  projectArea.textContent = projectObject.name;
+  noteArea.textContent = taskObject.details;
+
+  infoModal.showModal();
 };
 
 export default mainContentUI;

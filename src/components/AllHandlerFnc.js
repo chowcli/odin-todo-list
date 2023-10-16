@@ -3,7 +3,7 @@ import Project from "./project";
 import todoList from "./todoList";
 import createProjectDOM from "./projectDOM";
 import contentDOM from "./contentDisplayDOM";
-import createTaskDOM from "./taskDOM";
+import { createTaskDOM } from "./taskDOM";
 
 // Support function
 function createProject(name) {

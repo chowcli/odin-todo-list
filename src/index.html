@@ -38,13 +38,46 @@
       </div>
     </nav>
 
-    <main class="main-content"></main>
+    <main class="main-content">
+      <dialog class="task-info-modal">
+        <div class="priority-area">
+          <i class="bx bxs-flag"></i>
+        </div>
+
+        <div class="title-part">
+          <span class="task-title"></span>
+          <button class="close-modal-btn">
+            <i class="bx bx-x"></i>
+          </button>
+        </div>
+
+        <div class="info-part">
+          <div class="time-part">
+            <i class="bx bx-alarm-exclamation"></i>
+            <span class="time-area"></span>
+          </div>
+
+          <div class="folder-part">
+            <i class="bx bxs-folder-open"></i>
+            <span class="project-area"></span>
+          </div>
+
+          <p class="note-area"></p>
+        </div>
+      </dialog>
+    </main>
 
     <dialog class="modal">
       <form id="task-info" method="dialog">
         <div class="task-title">
           <label for="title"></label>
-          <input type="text" name="task-title" id="title" maxlength="40" placeholder="Title: Do homework" required />
+          <input
+            type="text"
+            name="task-title"
+            id="title"
+            maxlength="40"
+            placeholder="Title: Do homework"
+            required />
         </div>
 
         <div class="task-description">
@@ -76,7 +109,7 @@
 
       <div class="below">
         <button type="submit" class="add" form="task-info">Add</button>
-        <button class="save" form="task-info" hidden>Save</button>
+        <button type="submit" class="save" form="task-info" hidden>Save</button>
 
         <button class="cancel">Cancel</button>
       </div>
