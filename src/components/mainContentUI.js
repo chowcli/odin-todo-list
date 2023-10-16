@@ -6,6 +6,7 @@ import { clearInputField, checkValidName, setHiddenAttr } from "./reuseFunc";
 const mainContentUI = () => {
   const mainContent = document.querySelector(".main-content");
   const modal = document.querySelector(".modal");
+  const infoModal = document.querySelector(".task-info-modal");
 
   mainContent.addEventListener("click", event => {
     const { target } = event;
@@ -16,6 +17,15 @@ const mainContentUI = () => {
       target.closest(".add-task span")
     ) {
       clearInputField();
+
+      // prevent saveBtn from working when no taskItem exist
+      const saveBtn = modal.querySelector(".below .save");
+      const addBtn = modal.querySelector(".below .add");
+      if (!saveBtn.hasAttribute("hidden")) {
+        setHiddenAttr(saveBtn, true);
+        setHiddenAttr(addBtn, false);
+      }
+
       modal.showModal();
 
       const container = mainContent.querySelector(".container");
@@ -54,10 +64,10 @@ const mainContentUI = () => {
         }
       });
 
-      const saveBtn = modal.querySelector(".below .add");
-      const editBtn = modal.querySelector(".below .save");
-      setHiddenAttr(saveBtn, true);
-      setHiddenAttr(editBtn, false);
+      const addBtn = modal.querySelector(".below .add");
+      const saveBtn = modal.querySelector(".below .save");
+      setHiddenAttr(addBtn, true);
+      setHiddenAttr(saveBtn, false);
 
       modal.showModal();
       taskModalUI({
@@ -89,22 +99,7 @@ const mainContentUI = () => {
       const projectObject = todoList.getProjectObject(container.dataset.projectId);
       const taskObject = projectObject.getTaskObject(taskItem.dataset.taskId);
 
-      displayTaskInfo_Modal(taskObject, projectObject);
-    }
-
-    if (target.closest(".close-modal-btn")) {
-      const infoModal = document.querySelector(".task-info-modal");
-
-      const priorityIcon = infoModal.querySelector(".priority-area");
-      const removeClassName = Array.from(priorityIcon.classList).find(className => {
-        return className.includes("-level");
-      });
-      priorityIcon.classList.remove(removeClassName);
-
-      infoModal.querySelector(".taskTitle").textContent = "";
-      infoModal.querySelector(".time-area").textContent = "";
-      infoModal.querySelector(".project-area").textContent = "";
-      infoModal.querySelector(".note-area").textContent = "";
+      displayTaskInfo_Modal(infoModal, taskObject, projectObject);
     }
   });
 };
@@ -168,10 +163,12 @@ const taskModalUI = ({ modalElement, projectObject, taskContainer, taskItem, tas
       const input_DueDate = modalElement.querySelector("input[name='task-dueDate']");
       const input_Priority = modalElement.querySelector("input[name='priority']:checked");
 
-      taskObject.name = input_Title.value;
-      taskObject.details = textarea_Description.value;
-      taskObject.dueDate = input_DueDate.value;
-      taskObject.priority = input_Priority.value;
+      taskObject.editInfo(
+        input_Title.value,
+        textarea_Description.value,
+        input_DueDate.value,
+        input_Priority.value
+      );
 
       modifyTaskDOM(taskItem, taskObject);
       modalElement.close();
@@ -184,12 +181,9 @@ const taskModalUI = ({ modalElement, projectObject, taskContainer, taskItem, tas
   modalElement.addEventListener("click", clickHandler);
 };
 
-const displayTaskInfo_Modal = (taskObject, projectObject) => {
-  const infoModal = document.querySelector(".task-info-modal");
-
+const displayTaskInfo_Modal = (infoModal, taskObject, projectObject) => {
   const priorityIcon = infoModal.querySelector(".priority-area");
-  console.log(priorityIcon);
-  const taskTitle = infoModal.querySelector(".taskTitle");
+  const taskTitle = infoModal.querySelector(".task-title");
   const timeArea = infoModal.querySelector(".time-area");
   const projectArea = infoModal.querySelector(".project-area");
   const noteArea = infoModal.querySelector(".note-area");
@@ -201,6 +195,25 @@ const displayTaskInfo_Modal = (taskObject, projectObject) => {
   noteArea.textContent = taskObject.details;
 
   infoModal.showModal();
+  const closeModalBtn = infoModal.querySelector(".close-modal-btn");
+
+  function closeModalBtnHandler() {
+    const removeClassName = Array.from(priorityIcon.classList).find(className => {
+      return className.includes("-level");
+    });
+    priorityIcon.classList.remove(removeClassName);
+
+    taskTitle.textContent = "";
+    timeArea.textContent = "";
+    projectArea.textContent = "";
+    noteArea.textContent = "";
+
+    infoModal.close();
+
+    closeModalBtn.removeEventListener("click", closeModalBtnHandler);
+  }
+
+  closeModalBtn.addEventListener("click", closeModalBtnHandler);
 };
 
 export default mainContentUI;
