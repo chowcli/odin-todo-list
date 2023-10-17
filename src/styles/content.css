@@ -84,6 +84,7 @@
 
   & span {
     font-size: 1.2rem;
+    font-weight: 600;
   }
 
   & i {
@@ -128,15 +129,15 @@
   }
 
   &.medium-priority {
-    color: var(--sun-glow);
+    color: var(--yellow-sea);
 
     .leftPart i,
     .rightPart i {
-      color: var(--sun-glow);
+      color: var(--yellow-sea);
     }
 
     &:hover {
-      border: 2px solid var(--sun-glow);
+      border: 2px solid var(--yellow-sea);
     }
   }
 

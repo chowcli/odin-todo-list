@@ -159,3 +159,93 @@ label.priority {
     }
   }
 }
+
+/*  */
+/*  */
+/* Styling for task info modal */
+
+dialog.task-info-modal {
+  width: 40%;
+  margin: 10% auto 0;
+  padding: 20px;
+  box-shadow: var(--box-shadow);
+  border: none;
+  position: relative;
+
+  background-color: var(--wisp-pink);
+  color: var(--blue-violet);
+
+  &::backdrop {
+    background-color: rgba(0, 0, 0, 0.2);
+    -webkit-backdrop-filter: blur(8px); /* for safari */
+    backdrop-filter: blur(8px);
+  }
+
+  & p {
+    height: 30vh;
+    padding: 10px;
+    overflow: auto;
+    border: 2px solid var(--blue-violet);
+    border-radius: 5px;
+  }
+}
+
+.task-info-modal .title-part {
+  display: flex;
+  gap: 10px;
+  word-break: break-word;
+  border-bottom: 2px solid #6554af;
+
+  font-size: 1.3rem;
+  font-weight: 700;
+
+  .priority-area {
+    &.low-level {
+      color: var(--la-palma);
+    }
+
+    &.medium-level {
+      color: var(--sun-glow);
+    }
+
+    &.high-level {
+      color: var(--alizarin-crimson);
+    }
+  }
+
+  & button {
+    position: absolute;
+    top: 0px;
+    right: 0px;
+
+    border: none;
+    cursor: pointer;
+    background-color: var(--wisp-pink);
+    font-size: 1.8rem;
+    outline: none;
+
+    & i {
+      color: var(--blue-violet);
+    }
+  }
+}
+
+.task-info-modal .info-part {
+  margin: 10px 0;
+  display: flex;
+  gap: 20%;
+  font-size: 1rem;
+  font-weight: 700;
+
+  .time-part,
+  .folder-part {
+    display: flex;
+    gap: 5px;
+    align-items: center;
+  }
+
+  .bx {
+    font-size: 1.5rem;
+    font-weight: 800;
+  }
+}
