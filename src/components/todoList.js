@@ -33,7 +33,6 @@ const todoList = (() => {
     checkDuplicate,
     addProject,
     removeProject,
-    findProjectIndex,
     getProjectObject,
   };
 })();

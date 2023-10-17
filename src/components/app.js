@@ -1,3 +1,4 @@
+import "../styles/header.css";
 import navBarUI from "./siteBarUI";
 import mainContentUI from "./mainContentUI";
 
