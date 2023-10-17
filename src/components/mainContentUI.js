@@ -42,6 +42,31 @@ const mainContentUI = () => {
       return;
     }
 
+    if (target.closest(".checkBtn")) {
+      const taskItem = target.closest(".task-item");
+      const container = mainContent.querySelector(".container");
+      const checkBtn = target.closest(".checkBtn");
+
+      const projectObject = todoList.getProjectObject(container.dataset.projectId);
+      const taskObject = projectObject.getTaskObject(taskItem.dataset.taskId);
+
+      if (taskItem.classList.contains("check-false")) {
+        taskObject.completed = true;
+        taskItem.classList.remove("check-false");
+        taskItem.classList.add("check-true");
+
+        checkBtn.querySelector("i").classList.remove("bx-checkbox");
+        checkBtn.querySelector("i").classList.add("bxs-checkbox-checked");
+      } else {
+        taskObject.completed = false;
+        taskItem.classList.remove("check-true");
+        taskItem.classList.add("check-false");
+
+        checkBtn.querySelector("i").classList.remove("bxs-checkbox-checked");
+        checkBtn.querySelector("i").classList.add("bx-checkbox");
+      }
+    }
+
     if (target.closest(".editBtn")) {
       const input_Title = modal.querySelector("input[name='task-title']");
       const textarea_Description = modal.querySelector("textarea#description");

@@ -154,3 +154,8 @@
     }
   }
 }
+
+/* Styling for task item check-true */
+.task-item.check-true {
+  text-decoration: line-through;
+}
