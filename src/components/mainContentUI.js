@@ -5,7 +5,7 @@ import {
   editTaskHandler,
   deleteTaskHandler,
   showTaskInfoHandler,
-} from "./AllHandlerFnc";
+} from "./taskHandler";
 
 const mainContentUI = () => {
   const mainContent = document.querySelector(".main-content");

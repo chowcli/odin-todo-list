@@ -6,7 +6,7 @@ import {
   deleteProjectHandler,
   displayProjectContent,
   shouldLoadContent,
-} from "./AllHandlerFnc";
+} from "./projectHandler";
 
 const navBarUI = () => {
   const siteBar = document.querySelector(".site-bar");
