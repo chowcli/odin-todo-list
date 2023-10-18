@@ -1,17 +1,10 @@
 const path = require("path");
-const HtmlWebpackPlugin = require("html-webpack-plugin");
+const { merge } = require("webpack-merge");
+const common = require("./webpack.common.js");
 
-module.exports = {
+module.exports = merge(common, {
   mode: "development",
-  entry: "./src/index.js",
-  output: {
-    filename: "bundle.js",
-    path: path.resolve(__dirname, "dist"),
-    clean: true,
-  },
-
   devtool: "inline-source-map",
-
   devServer: {
     static: {
       directory: path.resolve(__dirname, "dist"),
@@ -32,12 +25,4 @@ module.exports = {
       },
     ],
   },
-
-  plugins: [
-    new HtmlWebpackPlugin({
-      title: "Todo List",
-      filename: "index.html",
-      template: "./src/index.html",
-    }),
-  ],
-};
+});
