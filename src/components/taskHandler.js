@@ -1,4 +1,4 @@
-import { setHiddenAttr, clearInputField } from "./reuseFunc";
+import { setHiddenAttr, clearInputField } from "./commonFnc";
 import todoList from "./todoList";
 import { taskModalUI, displayTaskInfo_Modal } from "./modalHandler";
 

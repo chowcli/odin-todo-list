@@ -1,4 +1,4 @@
-import { setHiddenAttr, checkValidName, clearInputField } from "./reuseFunc";
+import { setHiddenAttr, checkValidName, clearInputField } from "./commonFnc";
 import todoList from "./todoList";
 import Project from "./project";
 import createProjectDOM from "./projectDOM";
@@ -57,12 +57,18 @@ function cancelBtnHandler() {
   setHiddenAttr(addProjectBtn, false);
 }
 
-function deleteProjectHandler() {
-  const divElement = document.querySelector(".project-item");
-  const projectId = document.querySelector(".project-item").dataset.projectId;
+function deleteProjectHandler(target) {
+  const projectItem = target.closest(".project-item");
+  const projectId = projectItem.dataset.projectId;
+
+  const mainContent = document.querySelector(".main-content");
+  const container = mainContent.querySelector(".container");
+  if (mainContent.contains(container) && container.dataset.projectId === projectId) {
+    container.remove();
+  }
 
   todoList.removeProject(projectId);
-  divElement.remove();
+  projectItem.remove();
 }
 
 // contentDOM all handler

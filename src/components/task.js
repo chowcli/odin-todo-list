@@ -1,4 +1,4 @@
-import { shortenUUID } from "./reuseFunc";
+import { shortenUUID } from "./commonFnc";
 
 class Task {
   constructor(name, details, dueDate, priority) {

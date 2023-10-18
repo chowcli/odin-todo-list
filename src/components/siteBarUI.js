@@ -34,7 +34,7 @@ const navBarUI = () => {
 
     // delete project button handler
     if (target.matches(".bx-trash")) {
-      deleteProjectHandler();
+      deleteProjectHandler(target);
       return;
     }
 

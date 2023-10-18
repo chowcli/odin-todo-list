@@ -1,4 +1,4 @@
-import { checkValidName } from "./reuseFunc";
+import { checkValidName } from "./commonFnc";
 import Task from "./task";
 import { createTaskDOM, modifyTaskDOM } from "./taskDOM";
 
