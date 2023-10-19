@@ -3,43 +3,32 @@
   <head>
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title><%= htmlWebpackPlugin.options.title %></title>
-    <link href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>Todo List</title>
+    <link href=https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css rel=stylesheet>
+    <script defer="defer" src="bundle.js"></script>
+    <link href="app.css" rel="stylesheet" />
   </head>
   <body>
     <header>
-      <div class="logo">
-        <i class="bx bx-menu"></i>
-      </div>
+      <div class="logo"><i class="bx bx-menu"></i></div>
       <div class="title">
         <i class="bx-fw bx bxs-calendar-check"></i>
         <h1>Todo List</h1>
       </div>
     </header>
-
     <nav class="site-bar">
       <h2>Project Lists</h2>
-
       <div class="project-container"></div>
-
-      <button class="add-new-project">
-        <i class="bx-fw bx bxs-book-add"></i>
-        Add new project
-      </button>
-
+      <button class="add-new-project"><i class="bx-fw bx bxs-book-add"></i> Add new project</button>
       <div class="add-project-popup" hidden>
         <input type="text" />
-
         <div class="btn-group">
-          <button class="add-project">Add</button>
-          <button class="cancel">Cancel</button>
+          <button class="add-project">Add</button> <button class="cancel">Cancel</button>
         </div>
       </div>
     </nav>
-
     <main class="main-content"></main>
-
     <dialog class="modal">
       <form id="task-info" method="dialog">
         <div class="task-title">
@@ -52,7 +41,6 @@
             placeholder="Title: Do homework"
             required />
         </div>
-
         <div class="task-description">
           <label for="description"></label>
           <textarea
@@ -60,59 +48,40 @@
             id="description"
             placeholder="Details: need to send them before ... ect"></textarea>
         </div>
-
         <div class="task-dueDate">
           <label for="dueDate">Due Date:</label>
           <input type="date" name="task-dueDate" id="dueDate" required />
         </div>
-
         <div class="task-priority">
           <span id="priority">Priority:</span>
-
           <input type="radio" id="priority-low" name="priority" value="low" required />
           <label for="priority-low" class="priority low">Low</label>
-
           <input type="radio" id="priority-medium" name="priority" value="medium" />
           <label for="priority-medium" class="priority medium">Medium</label>
-
           <input type="radio" id="priority-high" name="priority" value="high" />
           <label for="priority-high" class="priority high">High</label>
         </div>
       </form>
-
       <div class="below">
         <button type="submit" class="add" form="task-info">Add</button>
         <button type="submit" class="save" form="task-info" hidden>Save</button>
-
         <button class="cancel">Cancel</button>
       </div>
     </dialog>
-
     <dialog class="task-info-modal">
       <div class="title-part">
         <span class="task-title"></span>
-
-        <div class="priority-area">
-          <i class="bx bxs-flag"></i>
-        </div>
-
-        <button class="close-modal-btn">
-          <i class="bx bx-x"></i>
-        </button>
+        <div class="priority-area"><i class="bx bxs-flag"></i></div>
+        <button class="close-modal-btn"><i class="bx bx-x"></i></button>
       </div>
-
       <div class="info-part">
         <div class="time-part">
-          <i class="bx bx-alarm-exclamation"></i>
-          <span class="time-area"></span>
+          <i class="bx bx-alarm-exclamation"></i> <span class="time-area"></span>
         </div>
-
         <div class="folder-part">
-          <i class="bx bxs-folder-open"></i>
-          <span class="project-area"></span>
+          <i class="bx bxs-folder-open"></i> <span class="project-area"></span>
         </div>
       </div>
-
       <p class="note-area"></p>
     </dialog>
   </body>
