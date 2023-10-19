@@ -1,5 +1,4 @@
 const path = require("path");
-const HtmlWebpackPlugin = require("html-webpack-plugin");
 
 module.exports = {
   output: {
@@ -12,11 +11,23 @@ module.exports = {
     app: "./src/index.js",
   },
 
-  plugins: [
-    new HtmlWebpackPlugin({
-      title: "Todo List",
-      filename: "index.html",
-      template: "./src/index.html",
-    }),
-  ],
+  module: {
+    rules: [
+      {
+        test: /\.html$/i,
+        loader: "html-loader",
+      },
+
+      {
+        test: /\.js$/,
+        exclude: /node_modules/,
+        use: {
+          loader: "babel-loader",
+          options: {
+            presets: ["@babel/preset-env"],
+          },
+        },
+      },
+    ],
+  },
 };
