@@ -13,6 +13,16 @@ module.exports = merge(common, {
       filename: "[name].css",
       chunkFilename: "[id].css",
     }),
+    new HtmlWebpackPlugin({
+      title: "Todo List",
+      filename: "index.html",
+      template: "./src/index.html",
+      minify: {
+        removeAttributeQuotes: true,
+        collapseWhitespace: true,
+        removeComments: true,
+      },
+    }),
   ],
 
   module: {
@@ -29,16 +39,6 @@ module.exports = merge(common, {
       // For webpack@5 you can use the `...` syntax to extend existing minimizers (i.e. `terser-webpack-plugin`), uncomment the next line
       `...`,
       new CssMinimizerPlugin(),
-      new HtmlWebpackPlugin({
-        title: "Todo List",
-        filename: "index.html",
-        template: "./src/index.html",
-        minify: {
-          removeAttributeQuotes: true,
-          collapseWhitespace: true,
-          removeComments: true,
-        },
-      }),
     ],
   },
 });
